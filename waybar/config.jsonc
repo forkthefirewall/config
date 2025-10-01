@@ -1,0 +1,87 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 13,
+    "spacing": 1,
+
+    "modules-left": ["clock", "mpris"],
+    "modules-center": ["hyprland/workspaces", ],
+    "modules-right": ["tray","custom/eye-care", "wireplumber", "backlight", "battery", "network"],
+
+
+    "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+        "active": "●",
+        "default": "○"
+    },
+    "max-length": 10
+},
+
+    "clock": {
+        "format": "{:%d.%m.%Y | %H:%M}",
+          "on-click": "xdg-open https://calendar.google.com",
+    },
+
+    "wireplumber": {
+        "format": "\udb81\udd7e {volume}%",
+        "max-volume": 100,
+        "scroll-step": 5
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "format": "{icon} {capacity}%",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+    },
+
+    "network": {
+        "format": "",
+        "format-ethernet": "\udb83\udc9d",
+        "format-wifi": "{icon} ",
+        "format-disconnected": "\udb83\udc9c",
+        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "kitty -e iwctl",
+    },
+
+        "backlight": {
+        "format": " {percent}%",       // Ícone + porcentagem
+        "tooltip": false,
+        "on-click": "brightnessctl set 10%+" ,     // Clique para aumentar
+        "on-click-right": "brightnessctl set 10%-", // Clique direito para diminuir
+        "interval": 1
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 15
+    },
+
+    "mpris": {
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "⏸ {player_icon} {artist} - {title}",
+    "format-stopped": "⏹ Nenhuma música",
+    "player-icons": {
+    "spotify": "",
+    "vlc": "",
+    "default": "🎵"
+  },
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "interval": 1,
+    "max-length": 40,
+    "ellipsis": true,
+    "tooltip": true,
+},
+    "custom/eye-care": {
+    "format": "👁️",
+    "tooltip": true,
+    "on-click": "~/.config/hypr/scripts/eye-care-menu.sh"
+},
+}
